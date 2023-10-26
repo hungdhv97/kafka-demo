@@ -13,13 +13,13 @@ public class KafkaProducerController {
 
   @Autowired private KafkaProducerService kafkaProducerService;
 
-  @PostMapping("/send")
+  @PostMapping("/send-to-topic")
   public String sendMessage(@RequestParam String topic, @RequestBody String message) {
     this.kafkaProducerService.sendToTopic(topic, message);
     return "Message sent successfully";
   }
 
-  @PostMapping("/sendToPartition")
+  @PostMapping("/send-to-partition")
   public String sendToPartition(
       @RequestParam String topic,
       @RequestParam int partition,
