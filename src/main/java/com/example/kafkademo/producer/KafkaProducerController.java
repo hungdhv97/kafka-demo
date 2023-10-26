@@ -23,18 +23,31 @@ public class KafkaProducerController {
   public String sendToPartition(
       @RequestParam String topic,
       @RequestParam(required = false) Integer partition,
-      @RequestParam String key,
+      @RequestParam(required = false) String key,
       @RequestBody String message) {
     this.kafkaProducerService.sendToPartition(topic, partition, key, message);
     return "Message sent to partition successfully";
   }
 
   @PostMapping("/send-to-topic/messages")
-  public String send100MessagesToTopic(@RequestParam String topic) throws InterruptedException {
-    for (int i = 1; i <= 100; i++) {
+  public String send100MessagesToTopic(@RequestParam String topic, @RequestParam int size) {
+    for (int i = 1; i <= size; i++) {
       String message = "Message " + i;
       this.kafkaProducerService.sendToTopic(topic, message);
     }
-    return "Sent 100 messages to topic successfully";
+    return "Sent " + size + " messages to topic successfully";
+  }
+
+  @PostMapping("/send-to-partition/messages")
+  public String sendMultipleMessagesToPartition(
+      @RequestParam String topic,
+      @RequestParam(required = false) Integer partition,
+      @RequestParam(required = false) String key,
+      @RequestParam int size) {
+    for (int i = 1; i <= size; i++) {
+      String message = "Message " + i;
+      this.kafkaProducerService.sendToPartition(topic, partition, key, message);
+    }
+    return "Sent " + size + " messages to partition successfully";
   }
 }
