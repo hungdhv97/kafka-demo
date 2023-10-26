@@ -16,7 +16,7 @@ public class KafkaProducerService {
     this.kafkaTemplate.send(topic, message);
   }
 
-  public void sendToPartition(String topic, int partition, String key, String message) {
+  public void sendToPartition(String topic, Integer partition, String key, String message) {
     ProducerRecord<String, String> record = new ProducerRecord<>(topic, partition, key, message);
     this.kafkaTemplate.send(record);
   }
