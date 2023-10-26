@@ -18,7 +18,6 @@ spring:
         queue-buffering-max-ms: 0
 server:
   port: 8080
-
 ---
 spring:
   config:

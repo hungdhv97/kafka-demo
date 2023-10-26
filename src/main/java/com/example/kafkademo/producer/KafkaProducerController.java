@@ -55,7 +55,7 @@ public class KafkaProducerController {
   @PostMapping("multi/send-to-topic/messages")
   public String sendMultipleProducersSendMultipleMessagesToTopic(
       @RequestParam String topic, @RequestParam int numProducers, @RequestParam int numMessages) {
-    for (int i = 0; i < numProducers; i++) {
+    for (int i = 1; i <= numProducers; i++) {
       int i1 = i;
       new Thread(
               () -> {
