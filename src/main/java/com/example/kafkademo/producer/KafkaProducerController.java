@@ -22,7 +22,7 @@ public class KafkaProducerController {
   @PostMapping("/send-to-partition")
   public String sendToPartition(
       @RequestParam String topic,
-      @RequestParam int partition,
+      @RequestParam(required = false) Integer partition,
       @RequestParam String key,
       @RequestBody String message) {
     this.kafkaProducerService.sendToPartition(topic, partition, key, message);
