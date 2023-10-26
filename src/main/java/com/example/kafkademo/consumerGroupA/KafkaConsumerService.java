@@ -8,6 +8,6 @@ public class KafkaConsumerService {
 
   @KafkaListener(topics = "topic-demo", groupId = "group-a")
   public void listenOnPartition(String message) {
-    System.out.println("Consumer2 GroupA received message from topic: " + message);
+    System.out.println("Consumer of GroupA received message from topic: " + message);
   }
 }
