@@ -30,7 +30,7 @@ spring:
       consumer:
         key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
         value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-        group-id: my-group
+        group-id: group-a
         auto-offset-reset: earliest
         enable-auto-commit: true
         auto-commit-interval: 1000ms
@@ -49,7 +49,7 @@ spring:
       consumer:
         key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
         value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-        group-id: my-group
+        group-id: group-b
         auto-offset-reset: earliest
         enable-auto-commit: true
         auto-commit-interval: 1000ms
@@ -68,7 +68,7 @@ spring:
       consumer:
         key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
         value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-        group-id: my-group
+        group-id: group-c
         auto-offset-reset: earliest
         enable-auto-commit: true
         auto-commit-interval: 1000ms
