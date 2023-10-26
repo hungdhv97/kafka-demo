@@ -13,8 +13,9 @@ spring:
         acks: all
         retries: 3
         batch-size: 16384
-        linger-ms: 1
         buffer-memory: 33554432
+        linger-ms: 0
+        queue-buffering-max-ms: 0
 server:
   port: 8080
 
