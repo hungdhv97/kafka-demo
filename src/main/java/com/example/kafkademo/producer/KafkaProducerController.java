@@ -28,4 +28,13 @@ public class KafkaProducerController {
     this.kafkaProducerService.sendToPartition(topic, partition, key, message);
     return "Message sent to partition successfully";
   }
+
+  @PostMapping("/send-to-topic/messages")
+  public String send100MessagesToTopic(@RequestParam String topic) throws InterruptedException {
+    for (int i = 1; i <= 100; i++) {
+      String message = "Message " + i;
+      this.kafkaProducerService.sendToTopic(topic, message);
+    }
+    return "Sent 100 messages to topic successfully";
+  }
 }
