@@ -22,7 +22,7 @@ server:
 spring:
   config:
     activate:
-      on-profile: consumer1
+      on-profile: groupA
   kafka:
     properties:
       bootstrap:
@@ -41,7 +41,7 @@ server:
 spring:
   config:
     activate:
-      on-profile: consumer2
+      on-profile: groupB
   kafka:
     properties:
       bootstrap:
@@ -56,3 +56,22 @@ spring:
         max-poll-records: 50
 server:
   port: 8082
+---
+spring:
+  config:
+    activate:
+      on-profile: groupC
+  kafka:
+    properties:
+      bootstrap:
+        servers: localhost:9092
+      consumer:
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        group-id: my-group
+        auto-offset-reset: earliest
+        enable-auto-commit: true
+        auto-commit-interval: 1000ms
+        max-poll-records: 50
+server:
+  port: 8083
