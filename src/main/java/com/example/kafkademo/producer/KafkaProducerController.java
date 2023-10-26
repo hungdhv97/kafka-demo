@@ -30,12 +30,13 @@ public class KafkaProducerController {
   }
 
   @PostMapping("/send-to-topic/messages")
-  public String send100MessagesToTopic(@RequestParam String topic, @RequestParam int size) {
-    for (int i = 1; i <= size; i++) {
+  public String sendMultipleMessagesToTopic(
+      @RequestParam String topic, @RequestParam int numMessages) {
+    for (int i = 1; i <= numMessages; i++) {
       String message = "Message " + i;
       this.kafkaProducerService.sendToTopic(topic, message);
     }
-    return "Sent " + size + " messages to topic successfully";
+    return "Sent " + numMessages + " messages to topic successfully";
   }
 
   @PostMapping("/send-to-partition/messages")
@@ -43,11 +44,28 @@ public class KafkaProducerController {
       @RequestParam String topic,
       @RequestParam(required = false) Integer partition,
       @RequestParam(required = false) String key,
-      @RequestParam int size) {
-    for (int i = 1; i <= size; i++) {
+      @RequestParam int numMessages) {
+    for (int i = 1; i <= numMessages; i++) {
       String message = "Message " + i;
       this.kafkaProducerService.sendToPartition(topic, partition, key, message);
     }
-    return "Sent " + size + " messages to partition successfully";
+    return "Sent " + numMessages + " messages to partition successfully";
+  }
+
+  @PostMapping("multi/send-to-topic/messages")
+  public String sendMultipleProducersSendMultipleMessagesToTopic(
+      @RequestParam String topic, @RequestParam int numProducers, @RequestParam int numMessages) {
+    for (int i = 0; i < numProducers; i++) {
+      int i1 = i;
+      new Thread(
+              () -> {
+                for (int j = 1; j <= numMessages; j++) {
+                  String message = "Producer " + i1 + " Message " + j;
+                  this.kafkaProducerService.sendToTopic(topic, message);
+                }
+              })
+          .start();
+    }
+    return numProducers + " producers started successfully";
   }
 }
