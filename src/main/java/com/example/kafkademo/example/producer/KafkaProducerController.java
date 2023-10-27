@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/producer")
+@RequestMapping("/api/example")
 public class KafkaProducerController {
 
   @Autowired private KafkaProducerService kafkaProducerService;

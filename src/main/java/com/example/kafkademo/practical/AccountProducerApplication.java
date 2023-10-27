@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.example.kafkademo.practical.producer")
+@ComponentScan(basePackages = "com.example.kafkademo.practical.accountProducer")
 public class AccountProducerApplication {
 
   public static void main(String[] args) {
