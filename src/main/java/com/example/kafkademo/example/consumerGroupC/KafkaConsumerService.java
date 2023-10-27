@@ -1,4 +1,4 @@
-package com.example.kafkademo.consumerGroupC;
+package com.example.kafkademo.example.consumerGroupC;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.TopicPartition;
