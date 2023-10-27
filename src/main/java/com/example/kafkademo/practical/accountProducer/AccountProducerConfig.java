@@ -21,7 +21,7 @@ public class AccountProducerConfig {
   private String bootstrapServer;
 
   @Bean
-  public ProducerFactory<String, Account> producerFactory() {
+  public ProducerFactory<String, Object> producerFactory() {
     Map<String, Object> configs = new HashMap<>();
     configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
     configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -31,7 +31,7 @@ public class AccountProducerConfig {
   }
 
   @Bean
-  public KafkaTemplate<String, Account> kafkaTemplate() {
+  public KafkaTemplate<String, Object> kafkaTemplate() {
     return new KafkaTemplate<>(this.producerFactory());
   }
 }
