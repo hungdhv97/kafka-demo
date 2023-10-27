@@ -1,6 +1,5 @@
 package com.example.kafkademo.practical.accountProducer;
 
-import com.example.kafkademo.practical.dto.Account;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -27,6 +26,7 @@ public class AccountProducerConfig {
     configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
     configs.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, RoundRobinPartitioner.class);
+    configs.put(JsonSerializer.ADD_TYPE_INFO_HEADERS, false);
     return new DefaultKafkaProducerFactory<>(configs);
   }
 
