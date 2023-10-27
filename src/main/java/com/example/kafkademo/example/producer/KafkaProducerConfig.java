@@ -25,6 +25,7 @@ public class KafkaProducerConfig {
     configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     configs.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, RoundRobinPartitioner.class);
+    configs.put(ProducerConfig.ACKS_CONFIG, "all");
     return new DefaultKafkaProducerFactory<>(configs);
   }
 
