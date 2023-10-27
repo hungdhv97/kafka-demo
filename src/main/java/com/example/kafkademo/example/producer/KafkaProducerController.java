@@ -1,4 +1,4 @@
-package com.example.kafkademo.producer;
+package com.example.kafkademo.example.producer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,14 +1,14 @@
-package com.example.kafkademo;
+package com.example.kafkademo.practical;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.example.kafkademo.consumerGroupC")
-public class KafkaConsumerGroupCApplication {
+@ComponentScan(basePackages = "com.example.kafkademo.practical.producer")
+public class AccountProducerApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(KafkaConsumerGroupCApplication.class, args);
+    SpringApplication.run(AccountProducerApplication.class, args);
   }
 }

@@ -1,4 +1,4 @@
-package com.example.kafkademo.consumerGroupC;
+package com.example.kafkademo.example.consumerGroupA;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +23,7 @@ public class KafkaConsumerConfig {
     props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
     props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-    props.put(ConsumerConfig.GROUP_ID_CONFIG, "group-c");
+    props.put(ConsumerConfig.GROUP_ID_CONFIG, "group-a");
     return props;
   }
 
