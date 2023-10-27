@@ -10,4 +10,9 @@ public class KafkaConsumerService {
   public void listenOnTopic(String message) {
     System.out.println("Consumer of GroupA received message from topic: " + message);
   }
+
+  @KafkaListener(topics = "topic-demo.DLT", groupId = "group-dlt")
+  public void listenDLTOnTopic(String message) {
+    System.out.println("Received message from Dead Letter Topic: " + message);
+  }
 }

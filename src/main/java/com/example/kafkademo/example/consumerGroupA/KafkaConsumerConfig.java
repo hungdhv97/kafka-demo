@@ -4,18 +4,22 @@ import java.util.HashMap;
 import java.util.Map;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.listener.DefaultErrorHandler;
 
 @Configuration
 public class KafkaConsumerConfig {
 
   @Value("${spring.kafka.properties.bootstrap.servers}")
   private String bootstrapServers;
+
+  @Autowired private DefaultErrorHandler kafkaDefaultErrorHandler;
 
   @Bean
   public Map<String, Object> consumerConfigs() {
@@ -37,6 +41,7 @@ public class KafkaConsumerConfig {
     ConcurrentKafkaListenerContainerFactory<String, String> factory =
         new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(consumerFactory());
+    factory.setCommonErrorHandler(kafkaDefaultErrorHandler); // Set the error handler here
     return factory;
   }
 }
